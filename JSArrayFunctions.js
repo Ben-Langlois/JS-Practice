@@ -1,4 +1,5 @@
 // JSArrayFunctions.js 
+// my god
 const customers = [
     {
         'first': 'Ben',
