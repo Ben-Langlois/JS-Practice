@@ -1,5 +1,4 @@
 // JSArrayFunctions.js 
-// my god
 const customers = [
     {
         'first': 'Ben',
@@ -45,9 +44,12 @@ const customers = [
     }
 
 ]
- const arrOfNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// Array Functions
+const arrOfNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let randomNums = [14, 25, 123, 53, 5, 234, 42, 63, 74, 2, 0];
+let smallNums = [0, 1, 2, 3, 4, 5];
+let arrOfObj = [{x: 0}, {x: 1}, {x: 2}, {x: 3}, {x: 4}, {x: 5}];
 
+// Array Functions
 // #region .map 
 /* .map(function)
  - Loops through every element applying the callback function to its elements
@@ -89,7 +91,6 @@ const customers = [
  - Creates a new array (doesnt mutate og)
 */ 
 
-// let randomNums = [14, 25, 123, 53, 5, 234, 42, 63, 74, 2, 0];
 // return all numbers higher than 10
 // const filterResult1 = randomNums.filter(e => e > 10);
 
@@ -111,5 +112,53 @@ const customers = [
 // console.log(filterResult2);
 // #endregion
 
-// Reduce
-// Sort
+// #region .reduce
+/* .reduce(function)
+ - executes a callback/reader function to each element of an array
+ - mutates og array
+ - not sure the point yet besides getting sum of all numbers
+*/
+
+// cycle through arr and add numbers together
+//const filterCallback = (total, current) => total + current;
+
+// cycle through array of object and add values together
+//const filterCallBack = (total, current) => total + current.x; 
+
+//console.log(smallNums.reduce(filterCallback));          // 15
+
+// you can add a number after the callback to increase the sum (for some reason lmao) 
+//console.log(smallNums.reduce(filterCallback, 1));       // 16
+
+// // How I think its written (HAVeNT FINISHED)
+// const myReduce = (arr) => {
+//     for(let x in arr){
+
+//     }
+// }
+// #endregion
+
+// #region .sort 
+/* .sort(function)
+ - cycles through array and sorts depending on function
+ - mutates og array by sorting elements in place
+ - default sort is ascending (if no callback is provided)
+*/
+/* Syntax
+arr.sort([compareFunction])
+
+function compareFunction(a, b) {       
+  return a - b;                     // sorts in ascending order
+}
+*/
+// lets try without call back
+console.log(randomNums.sort());                 //[0, 123, 14, 2, 234, 25, 42, 5, 53, 63, 74]
+// only really sorts first number of element 
+// although [1, 12, 14, 13].sort() if would give 1, 12, 13, 14
+
+// properly sorting by ascending
+console.log(randomNums.sort((a,b) => a - b));
+
+// #endregion
+
+// Problems
