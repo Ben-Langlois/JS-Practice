@@ -47,11 +47,11 @@
  - returns true or false
 */ 
 let str = "A quick brown fox jumps over the lazy dog";
-let reg = /[a-z]/g;
-let reg1 = /fox/;
-let reg2 = /horse/;
-let reg3 = /\w/;            // the \w is for any letter (inverse is \W for things not letters)
-let reg4 = /\d/;            // the \d is for any digit (inverse is \D for anything NOT a number)
+// let reg = /[a-z]/g;
+// let reg1 = /fox/;
+// let reg2 = /horse/;
+// let reg3 = /\w/;            // the \w is for any letter (inverse is \W for things not letters)
+// let reg4 = /\d/;            // the \d is for any digit (inverse is \D for anything NOT a number)
 
 // // test for 'fox'
 // console.log(reg1.test(str));            // true
@@ -62,32 +62,70 @@ let reg4 = /\d/;            // the \d is for any digit (inverse is \D for anythi
 // // test for any number
 // console.log(reg4.test(str));            // false
 
-// The following are technically string fun--tions but still work with regex
+// The following are technically string functions but still work with regex
 /* match()
  - returns an array of values which match regex 
  - like test but instead returns values
 */
 // vars
-let fdoxg = /.o./g;
+//let fdoxg = /.o./g;
 
 // using reg should return all 
 //console.log(str.match(reg));                // returns every letter in str
 
-let match = str.match(fdoxg);
-console.log(match);                           // ["row", "fox", " ov", "dog"]
+// let match = str.match(fdoxg);
+// console.log(match);                           // ["row", "fox", " ov", "dog"]
 // using whitespace characters you can just get fox and dog
-let match2 = str.match(/\s.o./g);
-console.log(match2);                          // [" fox", " dog"]
+// NOTE the match function really only returns the first result unless using 'g'
+// let match2 = str.match(/\s.o./g);             // using the 'g' flag after the regex makes it continue searching even after the first result  
+// console.log(match2);                          // [" fox", " dog"]
+
+/* matchAll() cant get it to work, might as well use .match
+ - like match but returns all that meet criteria
+*/
+// const regMatchAll = new RegExp('\s.o.\s', 'g');
+// const matchAll = [...str.matchAll(regMatchAll)];          // same as .match example but without g tag, will return same result
+// console.log(matchAll[0]);
+
+/* replace(toReplace, replacedWith)
+ - replaces regex match with passed value
+*/
+// replace all 3 letter words with o in the middle with box
+// let replaceReg = new RegExp(/\s.o.\s/);
+// console.log(str.replace(replaceReg, ' box '));           // A quick brown box jumps over the lazy dog
+
+// be more specific with a string instead of regex
+// replace dog with cat
+// console.log(str.replace('dog', 'cat'));                  // A quick brown fox jumps over the lazy cat
+
+/* replaceAll()
+ - replaces all cases matching replace value with value
+ - must have 'g' flag
+*/
+// replace all o's with i's   
+// let replaceAllReg = new RegExp('o', 'g');
+// console.log(str.replaceAll(replaceAllReg, 'i'));         // A quick briwn fix jumps iver the lazy dig
+
+/* search()
+ - searches through string for regex match
+ - returns starting index of first match 
+ - returns -1 if there isnt a match
+*/
+// search for 'fox'
+// let searchReg = new RegExp('fox');
+// console.log(str.search(searchReg));                // should return 14
+// using a string instead gets same result
+
+// search for 'cat'
+// console.log(str.search('cat'));                    // should return -1
+
+/* split()
+ - splits string at specified string (ex ' ', or '-');
+ - returns array
+*/
+// split string at spaces 
+console.log(str.split(' '));                          // ["A", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
 
 
-// matchAll()
-
-// replace()
-
-// replaceAll()
-
-// search()
-
-// split()
 
 // #endregion
