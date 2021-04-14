@@ -237,3 +237,46 @@ function addTogether() {
 }
 
 addTogether(2,3);
+
+
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/map-the-debris
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  var a = 2 * Math.PI;
+  var newArr = [];
+
+  const calc = (obj) => {
+    var c = Math.pow(earthRadius + obj.avgAlt, 3);
+    var b = Math.sqrt(c / GM);
+    var orbPeriod = Math.round(a * b);
+    return {name: obj.name, orbitalPeriod: orbPeriod};
+  }
+
+  for(var e in arr){
+    newArr.push(calc(arr[e]));
+  }
+
+
+  // theirs
+  // var a = 2 * Math.PI;
+  // var newArr = [];
+
+  // var getOrbPeriod = function(obj) {
+  //   var c = Math.pow(earthRadius + obj.avgAlt, 3);
+  //   var b = Math.sqrt(c / GM);
+  //   var orbPeriod = Math.round(a * b);
+  //   // create new object
+  //   return {name: obj.name, orbitalPeriod: orbPeriod};
+  // };
+
+  // for (var elem in arr) {
+  //   newArr.push(getOrbPeriod(arr[elem]));
+  // }
+
+  // return newArr;
+
+  return newArr;
+}
+
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
